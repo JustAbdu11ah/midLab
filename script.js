@@ -22,6 +22,10 @@ function addTodo() {
     deleteButton.textContent = "Delete";
     listItem.appendChild(deleteButton);
 
+    const editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    listItem.appendChild(editButton);
+
 
     checkbox.addEventListener("change", function () {
       if (checkbox.checked) {
@@ -35,6 +39,21 @@ function addTodo() {
     deleteButton.addEventListener("click", function () {
       listItem.remove();
     });
+    editButton.addEventListener("click", function () {
+
+
+        const editEntry=document.createElement("input")
+        const doneButton=document.createElement("button")
+        doneButton.textContent= "Done"
+        doneButton.addEventListener("click", function(){
+
+
+            listItem.textContent=editEntry.textContent
+
+
+        })
+
+    });
 
 
     todosList.appendChild(listItem);
@@ -43,6 +62,12 @@ function addTodo() {
     inputField.value = "";
   }
 }
+
+
+document.getElementById("form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  addTodo(); 
+});
 
 
 document.getElementById("form").addEventListener("submit", function (event) {
